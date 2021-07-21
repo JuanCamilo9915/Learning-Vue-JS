@@ -27,10 +27,10 @@
         </ul>
         <span>Lista de aviones:</span>
         <br><br>
-        <input type="text" v-model='nuevofabricante'>
+        <input type="text" v-model='nuevofabricante' v-on:keyup.enter="agregarFabricanteAviones">
         <!---v-on:click se puede reemplazar por @click, de ambas maneras, funciona igual--->
         <button @click="agregarFabricanteAviones">Agregar Fabricante</button>
-        <button v-on:click="prueba">Prueba</button>
+        <!---<button v-on:click="metodoPrueba">Prueba</button>--->
         <ul>
             <li v-for="listaAviones of aviones">{{listaAviones.empresa}} - {{listaAviones.flota}}
                 <span v-if='listaAviones.empresa == "Boing"'>
@@ -38,12 +38,25 @@
                 </span>
                 <span v-if='listaAviones.flota == null'>
                     No se han registrado los modelos de aviones
+                    <input type="text" v-model="listaAviones.flota" placeholder="Captura texto">
+                    <input type="text" v-model.number="listaAviones.flota" placeholder="Captura numero">
                 </span>
                 <ul>
-                    <li v-for='listaAvionesFlota of listaAviones.flota'>{{listaAvionesFlota}}</li>
+                    <li v-for='listaAvionesFlota of listaAviones.flota'>
+                        ID: {{id}} - Modelo: {{listaAvionesFlota}}
+                        <button @click="id++">+</button>
+                    </li>
                 </ul>
             </li>
         </ul>
+        <h2>Sumando la Muestra Estadística</h2>
+        <ul>
+            <li v-for="muestraPoblacion of muestraEstadistica">
+                {{muestraPoblacion.etapaPersonas}} - {{muestraPoblacion.porcentaje}}% - 
+                <input type="text" v-model.number="muestraPoblacion.porcentaje">
+            </li>
+        </ul>
+        <h3>Total: {{sumaPoblacion}}%</h3>
     </div>
     <!---------------------------------Importando Librería Vue-JS------------------------->
     <!---CDN para Desarrollo--->

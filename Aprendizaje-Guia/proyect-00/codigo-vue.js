@@ -8,18 +8,33 @@ const appVue = new Vue({
             { empresa: 'Boing', flota: [787, 737, 747] },
             { empresa: 'Airbus', flota: [350, 320, 380] }
         ],
-        nuevofabricante: ''
+        nuevofabricante: '',
+        id: null,
+        muestraEstadistica: [
+            {etapaPersonas: 'Adultos', porcentaje: 50},
+            {etapaPersonas: 'Jovenes', porcentaje: 25},
+            {etapaPersonas: 'Niños', porcentaje: 25}
+        ],
+        totalMuestra: 0
     },
     methods: {
-        prueba: function(){
+        metodoPrueba: function(){
             alert('Esto es la forma antigua de como se podia utilizar un método en Vue JS');
         },
         agregarFabricanteAviones () {
-            /*console.log("Se agrego el precio al producto");
-            alert('Se agrego el precio al producto');*/
             this.aviones.push({
                 empresa: this.nuevofabricante
             })
+            this.nuevofabricante = "";
+        }
+    },
+    computed: {
+        sumaPoblacion(){
+            this.totalMuestra = 0;
+            for (poblacion of this.muestraEstadistica) {
+                this.totalMuestra += poblacion.porcentaje;
+            }
+            return this.totalMuestra;
         }
     }
 });
