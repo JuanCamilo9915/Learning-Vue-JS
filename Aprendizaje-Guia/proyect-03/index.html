@@ -12,27 +12,9 @@
 </head>
 
 <body>
-    <div id="appVue" class="container">
-        <h1>Hola Mundo! {{message}}</h1>
-        <h2>Mensaje Invertido: {{messageInvert}} (Primera propiedad computada)</h2>
-
-        <input type="text" class="form-control" v-model="message">
-
-        <hr>
-
-        <h2>{{contador}}</h2>
-
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" :style="{'width': contador + '%'}" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100" :class="colorBarra">
-                {{contador}}%
-            </div>
-        </div>
-
-        <br>
-
-        <button class="btn btn-primary" @click="contador++">+</button>
-        <button class="btn btn-danger" @click="contador--">-</button>
+    <div id="appCicloVidaVue" class="container">
+        <h1>{{greeting}}</h1>
+<button @click="greeting = 'Greeting Modificado'">Modificar Greeting</button>
     </div>
     <!-------------Importando Librería Vue-JS------------->
     <!---CDN para Desarrollo--->
